@@ -5,6 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Standortabfrage</title>
+</head>
+<body>
+    
+
+    <button id="find-me">Show my location</button><br />
+    <p id="status"></p>
+    <a id="map-link" target="_blank"></a>
+
+
+    <a href="https://permission.site/">Other Website that access your location</a>
+
     <script>
         function geoFindMe() {
           const status = document.querySelector("#status");
@@ -37,16 +48,5 @@
         document.querySelector("#find-me").addEventListener("onclick", geoFindMe);
 
     </script>
-</head>
-<body>
-    
-
-    <button id="find-me">Show my location</button><br />
-    <p id="status"></p>
-    <a id="map-link" target="_blank"></a>
-
-
-    <a href="https://permission.site/">Other Website that access your location</a>
-
 </body>
 </html>
