@@ -1,10 +1,59 @@
+<!-- Generated from ChatGPT -->
 <!DOCTYPE html>
-<html>
- 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standortabfrage</title>
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError, {
+                    enableHighAccuracy: true,
+                    timeout: 5000,
+                    maximumAge: 0
+                });
+            } else {
+                document.getElementById("location").innerHTML = "Geolocation wird von diesem Browser nicht unterstützt.";
+            }
+        }
+
+        function showPosition(position) {
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+            var accuracy = position.coords.accuracy;
+
+            document.getElementById("location").innerHTML =
+                "Breitengrad: " + lat + "<br>" +
+                "Längengrad: " + lon + "<br>" +
+                "Genauigkeit: " + accuracy + " Meter";
+        }
+
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    document.getElementById("location").innerHTML = "Benutzer hat die Standortanfrage abgelehnt.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    document.getElementById("location").innerHTML = "Standortinformationen sind nicht verfügbar.";
+                    break;
+                case error.TIMEOUT:
+                    document.getElementById("location").innerHTML = "Die Standortanfrage hat zu lange gedauert.";
+                    break;
+                case error.UNKNOWN_ERROR:
+                    document.getElementById("location").innerHTML = "Ein unbekannter Fehler ist aufgetreten.";
+                    break;
+            }
+        }
+    </script>
+</head>
 <body>
-  <h1>Philipp</h1>
-  <p>Welcome to my website!</p>
-  <img src="https://content.codecademy.com/articles/github-pages-via-web-app/happy-ice-cream.gif" />
+
+    <h1>Standortabfrage</h1>
+    <p>Klicken Sie auf die Schaltfläche unten, um den genauen Standort abzufragen:</p>
+    <button onclick="getLocation()">Standort ermitteln</button>
+
+    <p id="location"></p>
+
 </body>
- 
 </html>
